@@ -2,6 +2,17 @@
 
 An *Alien: Romulus* **Hyperdyne Systems** (`PRIVATE TERMINAL 13-231-1`) theme for [Omarchy](https://omarchy.org/).
 
+## Screenshots
+
+### Clean Workspace
+![Hyperdyne Clean Workspace](screenshots/hyperdyne-clean-workspace.png)
+
+### Terminal & Prompt
+![Hyperdyne Terminal](screenshots/hyperdyne-terminal.png)
+
+### System About
+![Hyperdyne About](screenshots/hyperdyne-about.png)
+
 ## Included Elements
 - **`theme/`**: Omarchy color palette (`colors.toml`), shell/lock/menu/popup overrides (`shell.toml`), icons, preview, and wallpapers.
 - **`fonts/`**: `ShareTechMono-Regular.ttf` (condensed retro-futuristic monospace font).
