@@ -27,6 +27,9 @@ An *Alien: Romulus* **Hyperdyne Systems** (`PRIVATE TERMINAL 13-231-1`) theme fo
 ### Wallhaven CRT
 ![Wallhaven CRT Wallpaper](theme/backgrounds/wallhaven-k8r93q.png)
 
+### Android (Dark)
+![Android Dark Wallpaper](theme/backgrounds/android-dark.jpg)
+
 ## Summary: What Gets Installed & Effects
 
 ### Visual & CRT Effects
