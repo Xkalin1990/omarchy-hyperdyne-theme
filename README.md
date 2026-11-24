@@ -17,6 +17,15 @@ To complete the vintage hardware feel without sacrificing daily usability, the t
 ### System About
 ![Hyperdyne About](screenshots/hyperdyne-about-v2.png)
 
+### Plymouth Bootsplash
+![Hyperdyne Bootsplash](screenshots/hyperdyne-boot.png)
+
+### LUKS Disk Unlock
+![Hyperdyne LUKS Unlock](screenshots/hyperdyne-boot-unlock.png)
+
+### Reboot / Shutdown Splash
+![Hyperdyne Reboot](screenshots/hyperdyne-reboot.png)
+
 ## Wallpapers
 
 ### Hyperdyne CRT
