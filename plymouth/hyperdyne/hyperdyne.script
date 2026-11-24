@@ -26,18 +26,22 @@ global.fake_progress_start_time = 0.0;
 global.password_shown = 0;
 global.max_progress = 0.0;
 
-# Window size the sprites were last laid out for
+# Window size and anchor coordinates the sprites were last laid out for
 global.layout_width = 0;
 global.layout_height = 0;
+global.term_x = 0;
+global.term_y = 0;
+global.prompt_x = 0;
+global.prompt_y = 0;
 
 fun update_cursor_position() {
   if (global.cursor_mode == "unlock") {
-    cursor.x = prompt.x + 140 + global.bullet_count * 14;
-    cursor.y = prompt.y + 52;
+    cursor.x = global.prompt_x + 140 + global.bullet_count * 14;
+    cursor.y = global.prompt_y + 52;
     cursor.sprite.SetPosition(cursor.x, cursor.y, 10003);
   } else if (global.cursor_mode == "shutdown") {
-    cursor.x = prompt.x + 410;
-    cursor.y = prompt.y + 52;
+    cursor.x = global.prompt_x + 410;
+    cursor.y = global.prompt_y + 52;
     cursor.sprite.SetPosition(cursor.x, cursor.y, 10003);
   }
 }
@@ -169,10 +173,14 @@ cursor.sprite = Sprite(cursor.image);
 cursor.sprite.SetOpacity(0);
 
 fun position_bullet(index) {
-  bullet.sprites[index].SetPosition(prompt.x + 140 + index * 14, prompt.y + 52, 10002);
+  bullet.sprites[index].SetPosition(global.prompt_x + 140 + index * 14, global.prompt_y + 52, 10002);
 }
 
 fun display_normal_callback() {
+  if (Window.GetWidth() != global.layout_width || Window.GetHeight() != global.layout_height) {
+    layout();
+  }
+
   hide_password_dialog();
   mode = Plymouth.GetMode();
 
@@ -195,6 +203,10 @@ fun display_normal_callback() {
 }
 
 fun display_password_callback(prompt_text, bullets) {
+  if (Window.GetWidth() != global.layout_width || Window.GetHeight() != global.layout_height) {
+    layout();
+  }
+
   global.password_shown = 1;
 
   stop_fake_progress();
@@ -216,8 +228,8 @@ fun display_password_callback(prompt_text, bullets) {
   for (index = 0; index < bullets_to_show; index++) {
     if (!bullet.sprites[index]) {
       bullet.sprites[index] = Sprite(bullet.image);
-      position_bullet(index);
     }
+    position_bullet(index);
     bullet.sprites[index].SetOpacity(1);
   }
 
@@ -259,17 +271,19 @@ fun layout() {
   global.layout_width = Window.GetWidth();
   global.layout_height = Window.GetHeight();
 
-  term.x = global.layout_width / 2 - term.image.GetWidth() / 2;
-  term.y = global.layout_height / 2 - term.image.GetHeight() / 2;
-  term.sprite.SetPosition(term.x, term.y, 10000);
+  global.term_x = global.layout_width / 2 - term.image.GetWidth() / 2;
+  global.term_y = global.layout_height / 2 - term.image.GetHeight() / 2;
+  term.x = global.term_x;
+  term.y = global.term_y;
+  term.sprite.SetPosition(global.term_x, global.term_y, 10000);
 
   # Lower terminal prompt area (inside the 12px glow padding)
-  prompt.x = term.x + 12 + 30;
-  prompt.y = term.y + 12 + 404;
+  global.prompt_x = global.term_x + 12 + 30;
+  global.prompt_y = global.term_y + 12 + 404;
 
-  prompt_unlock.sprite.SetPosition(prompt.x, prompt.y, 10001);
-  prompt_boot.sprite.SetPosition(prompt.x, prompt.y, 10001);
-  prompt_shutdown.sprite.SetPosition(prompt.x, prompt.y, 10001);
+  prompt_unlock.sprite.SetPosition(global.prompt_x, global.prompt_y, 10001);
+  prompt_boot.sprite.SetPosition(global.prompt_x, global.prompt_y, 10001);
+  prompt_shutdown.sprite.SetPosition(global.prompt_x, global.prompt_y, 10001);
 
   for (index = 0; bullet.sprites[index]; index++) {
     position_bullet(index);
@@ -277,8 +291,8 @@ fun layout() {
 
   update_cursor_position();
 
-  progress_box.x = prompt.x + 144;
-  progress_box.y = prompt.y + 61;
+  progress_box.x = global.prompt_x + 144;
+  progress_box.y = global.prompt_y + 61;
   progress_box.sprite.SetPosition(progress_box.x, progress_box.y, 10001);
 
   progress_bar.x = progress_box.x + 2;
