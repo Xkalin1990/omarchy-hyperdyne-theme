@@ -54,6 +54,14 @@ for plugin in omarchy.menu omarchy.bar; do
   fi
 done
 
+if [[ -d "$SCRIPT_DIR/omawidgets" && -d "$HOME/.config/omarchy/plugins/io.github.fabandrade88.omawidgets" ]]; then
+  omawidgets_dest="$HOME/.config/omarchy/plugins/io.github.fabandrade88.omawidgets"
+  mkdir -p "$omawidgets_dest/assets" "$omawidgets_dest/cards" "$omawidgets_dest/ui"
+  cp "$SCRIPT_DIR/omawidgets/assets/"* "$omawidgets_dest/assets/"
+  cp "$SCRIPT_DIR/omawidgets/cards/"* "$omawidgets_dest/cards/"
+  cp "$SCRIPT_DIR/omawidgets/ui/"* "$omawidgets_dest/ui/"
+fi
+
 # 4. Install CRT shader & terminal-scoped Hyprland shader watcher
 mkdir -p "$HOME/.config/hypr/shaders" "$HOME/.config/hypr/scripts"
 cp "$SCRIPT_DIR/shaders/crt-scanlines.glsl" "$HOME/.config/hypr/shaders/crt-scanlines.glsl"

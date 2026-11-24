@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Geometric Arasaka-inspired corporate tri-node crest -->
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- Outer hexagonal/angled ring -->
+    <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#B81D24" stroke-width="2" opacity="0.85"/>
+    <!-- Three converging corporate blades -->
+    <path d="M32 10 L32 25" stroke="#FB3048" stroke-width="4.5"/>
+    <path d="M13 43 L26 35.5" stroke="#FB3048" stroke-width="4.5"/>
+    <path d="M51 43 L38 35.5" stroke="#FB3048" stroke-width="4.5"/>
+    <!-- Inner core -->
+    <circle cx="32" cy="32" r="4" fill="#FB3048"/>
+    <circle cx="32" cy="32" r="1.5" fill="#5DF4FE"/>
+  </g>
+</svg>

@@ -11,6 +11,9 @@ To complete the vintage hardware feel without sacrificing daily usability, the t
 ### Clean Workspace
 ![Hyperdyne Clean Workspace](screenshots/hyperdyne-clean-workspace.png)
 
+### OmaWidgets Desktop Cards
+![Hyperdyne OmaWidgets](screenshots/hyperdyne-omawidgets.png)
+
 ### Terminal & Prompt
 ![Hyperdyne Terminal](screenshots/hyperdyne-terminal.png)
 
@@ -54,6 +57,7 @@ To complete the vintage hardware feel without sacrificing daily usability, the t
 - **Omarchy Theme (`~/.config/omarchy/themes/hyperdyne/`)**: Palette (`colors.toml`), shell/lock/menu/popup overrides (`shell.toml`), icons, preview, and Hyperdyne CRT wallpapers. Cycle wallpapers with `omarchy theme bg next`.
 - **Font (`~/.local/share/fonts/`)**: `ShareTechMono-Regular.ttf` (`Share Tech Mono`), activated via `omarchy font set`.
 - **Shell Plugins (`~/.config/omarchy/plugins/`)**: Custom `omarchy.bar` and `omarchy.menu` plugins using Qt Quick `MultiEffect` phosphor glow and scanlines (existing plugins are backed up to `.bak`).
+- **OmaWidgets Desktop Cards (`omawidgets/`)**: Theme-gated Hyperdyne / Weyland-Yutani CRT terminal styling for **[OmaWidgets](https://github.com/fabandrade88/OmaWidgets)** (`io.github.fabandrade88.omawidgets`) featuring `W-Y //` telemetry headers, Weyland-Yutani & Hyperdyne emblems, corner reticles, scanlines, `Share Tech Mono` typography, and terminal-style telemetry blocks for Performance (`SYS-01`), Battery (`PWR-02`), Power Profile (`PRO-03`), Media (`AUD-04`), and Pods (`POD-05`). Activates **only** when `hyperdyne` is the active theme and reverts cleanly on any other theme.
 - **Hyprland Shader & Watcher (`~/.config/hypr/`)**: `shaders/crt-scanlines.glsl`, `scripts/crt-shader-watcher.sh`, `crt-shader-state.lua` (sourced from Omarchy's `looknfeel.lua`), and autostart entry in `autostart.lua`. Requires `jq` and `socat`.
 - **Branding (`~/.config/omarchy/branding/`)**: Custom `HYPERDYNE` block-art logos for the About window (`about.txt`) and screensaver (`screensaver.txt`).
 - **Terminal, Prompt & System Monitor**:
@@ -74,6 +78,20 @@ git clone https://github.com/Xkalin1990/omarchy-hyperdyne-theme.git
 cd omarchy-hyperdyne-theme
 chmod +x install.sh uninstall.sh
 ./install.sh
+```
+
+### OmaWidgets Desktop Cards (Bundled)
+
+If `io.github.fabandrade88.omawidgets` is already installed, `./install.sh` applies the Hyperdyne card styling automatically. To install **[OmaWidgets](https://github.com/fabandrade88/OmaWidgets)** (if missing), enable the desktop cards in `~/.config/omarchy/shell.json`, and apply the Hyperdyne / Weyland-Yutani styling in one step:
+
+```bash
+./scripts/install-omawidgets.sh
+```
+
+Or standalone without cloning first:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Xkalin1990/omarchy-hyperdyne-theme/main/scripts/install-omawidgets.sh | bash
 ```
 
 ## Uninstall
