@@ -11,7 +11,7 @@ An *Alien: Romulus* **Hyperdyne Systems** (`PRIVATE TERMINAL 13-231-1`) theme fo
 ![Hyperdyne Terminal](screenshots/hyperdyne-terminal.png)
 
 ### System About
-![Hyperdyne About](screenshots/hyperdyne-about.png)
+![Hyperdyne About](screenshots/hyperdyne-about-v2.png)
 
 ## Wallpapers
 
