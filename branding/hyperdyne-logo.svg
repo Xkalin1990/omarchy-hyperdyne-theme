@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 312" width="600" height="312">
+  <!-- Hyperdyne Systems Geometric Emblem (Model 120 A/2 Project) -->
+  <!-- Top-left solid triangle -->
+  <polygon points="20,16 288,16 288,124 208,204" fill="#f0a850"/>
+
+  <!-- Top-right hollow triangle frame -->
+  <path fill-rule="evenodd" fill="#f0a850"
+        d="M312,16 L580,16 L392,204 L312,124 Z
+           M340,44 L516,44 L392,168 L340,116 Z"/>
+
+  <!-- Bottom-center diamond -->
+  <polygon points="300,136 380,216 300,296 220,216" fill="#f0a850"/>
+</svg>
