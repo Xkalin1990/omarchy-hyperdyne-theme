@@ -2,6 +2,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
+import QtQuick.Effects
 import qs.Commons
 import qs.Commons as Commons
 import qs.Ui
@@ -1317,10 +1318,27 @@ Item {
 
       MouseArea { anchors.fill: parent; onClicked: {} }
 
+      Image {
+        anchors.fill: parent
+        source: Qt.resolvedUrl("scanline.png")
+        fillMode: Image.Tile
+        smooth: false
+        z: 30
+      }
+
       Item {
         id: keyCatcher
         anchors.fill: parent
         z: root.deleteConfirmOpen ? 20 : 0
+        layer.enabled: true
+        layer.effect: MultiEffect {
+          shadowEnabled: true
+          shadowColor: root.foreground
+          shadowBlur: 0.60
+          shadowOpacity: 0.55
+          shadowHorizontalOffset: 0
+          shadowVerticalOffset: 0
+        }
 
         // Focus is on filterInput, which forwards every key here first.
         Keys.onPressed: function(event) {
