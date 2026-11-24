@@ -37,10 +37,14 @@ should_enable_shader() {
 
 write_state() {
   local val="$1"
+  local dmg="$2"
   cat > "${STATE_FILE}" <<LUA
 hl.config({
   decoration = {
     screen_shader = "${val}",
+  },
+  debug = {
+    damage_tracking = ${dmg},
   },
 })
 LUA
@@ -58,9 +62,9 @@ sync_shader() {
   if [[ "${target_state}" != "${LAST_STATE}" ]]; then
     LAST_STATE="${target_state}"
     if [[ "${target_state}" == "on" ]]; then
-      write_state "${SHADER_PATH}"
+      write_state "${SHADER_PATH}" 0
     else
-      write_state "[[EMPTY]]"
+      write_state "[[EMPTY]]" 2
     fi
   fi
 }
