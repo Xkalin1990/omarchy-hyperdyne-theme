@@ -140,6 +140,10 @@ if command -v plymouth-set-default-theme >/dev/null 2>&1; then
   sudo fc-cache -f
   sudo cp -r "$SCRIPT_DIR/plymouth/hyperdyne/." /usr/share/plymouth/themes/hyperdyne/
   sudo plymouth-set-default-theme -R hyperdyne
+  if command -v limine-mkinitcpio >/dev/null 2>&1; then
+    echo "Updating Limine initramfs..."
+    sudo limine-mkinitcpio
+  fi
 else
   echo "Plymouth not installed; skipping bootsplash. Install with 'sudo pacman -S plymouth' and re-run to enable."
 fi

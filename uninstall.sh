@@ -69,6 +69,10 @@ if [[ -f "$HOME/.config/omarchy/hyperdyne-prev-plymouth" ]] && command -v plymou
   if [[ -n "$prev_plymouth" ]]; then
     echo "Restoring previous Plymouth theme '$prev_plymouth' (requires sudo)..."
     sudo plymouth-set-default-theme -R "$prev_plymouth" || true
+    if command -v limine-mkinitcpio >/dev/null 2>&1; then
+      echo "Updating Limine initramfs..."
+      sudo limine-mkinitcpio || true
+    fi
   fi
   rm -f "$HOME/.config/omarchy/hyperdyne-prev-plymouth"
 fi
