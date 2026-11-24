@@ -2,6 +2,10 @@
 
 An *Alien: Romulus* **Hyperdyne Systems** (`PRIVATE TERMINAL 13-231-1`) theme for [Omarchy](https://omarchy.org/).
 
+Inspired by the retro-futuristic Weyland-Yutani hardware terminals of *Alien: Romulus*, this theme transforms your Omarchy desktop into an amber-and-crimson CRT workstation. It pairs a deep `#1a0806` phosphor-black palette with warm `#f0a850` amber text, `#d9463e` crimson accents, and `Share Tech Mono` typography across the bar, menus, terminal, prompt, and system monitor.
+
+To complete the vintage hardware feel without sacrificing daily usability, the theme includes custom Qt Quick shell plugins with phosphor glow and scanlines, a terminal-scoped Hyprland CRT shader that automatically disables itself when graphical apps like browsers or IDEs are open, custom Hyperdyne Systems `about` & screensaver branding, curated CRT wallpapers, and an optional Plymouth bootsplash.
+
 ## Screenshots
 
 ### Clean Workspace
