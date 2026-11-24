@@ -19,6 +19,7 @@ global.cursor_frame = 0;
 global.cursor_active = 0;
 global.cursor_mode = "none";  # "unlock" or "shutdown"
 global.bullet_count = 0;
+global.stars_width = 0;
 global.fake_progress = 0.0;
 global.real_progress = 0.0;
 global.fake_progress_active = 0;
@@ -32,7 +33,10 @@ global.layout_height = 0;
 
 fun update_cursor_position() {
   if (global.cursor_mode == "unlock") {
-    cursor.x = prompt.x + 144 + global.bullet_count * 16;
+    cursor.x = prompt.x + 144 + global.stars_width;
+    if (global.stars_width > 0) {
+      cursor.x += 2;
+    }
     cursor.y = prompt.y + 52;
     cursor.sprite.SetPosition(cursor.x, cursor.y, 10003);
   } else if (global.cursor_mode == "shutdown") {
@@ -111,9 +115,7 @@ fun show_password_dialog() {
 
 fun hide_password_dialog() {
   prompt_unlock.sprite.SetOpacity(0);
-  for (index = 0; bullet.sprites[index]; index++) {
-    bullet.sprites[index].SetOpacity(0);
-  }
+  stars.sprite.SetOpacity(0);
 }
 
 fun show_shutdown_dialog() {
@@ -161,15 +163,15 @@ prompt_shutdown.image = Image("prompt_shutdown.png");
 prompt_shutdown.sprite = Sprite(prompt_shutdown.image);
 prompt_shutdown.sprite.SetOpacity(0);
 
-bullet.image = Image("bullet.png");
-bullet.sprites = [];
+stars.sprite = Sprite();
+stars.sprite.SetOpacity(0);
 
 cursor.image = Image("cursor.png");
 cursor.sprite = Sprite(cursor.image);
 cursor.sprite.SetOpacity(0);
 
-fun position_bullet(index) {
-  bullet.sprites[index].SetPosition(prompt.x + 144 + index * 16, prompt.y + 57, 10002);
+fun position_stars() {
+  stars.sprite.SetPosition(prompt.x + 144, prompt.y + 55, 10002);
 }
 
 fun display_normal_callback() {
@@ -201,11 +203,6 @@ fun display_password_callback(prompt_text, bullets) {
   hide_progress_bar();
   hide_shutdown_dialog();
 
-  # Clear all bullets first
-  for (index = 0; bullet.sprites[index]; index++) {
-    bullet.sprites[index].SetOpacity(0);
-  }
-
   max_bullets = 24;
   bullets_to_show = bullets;
   if (bullets_to_show > max_bullets) {
@@ -213,12 +210,20 @@ fun display_password_callback(prompt_text, bullets) {
   }
   global.bullet_count = bullets_to_show;
 
+  stars_str = "";
   for (index = 0; index < bullets_to_show; index++) {
-    if (!bullet.sprites[index]) {
-      bullet.sprites[index] = Sprite(bullet.image);
-      position_bullet(index);
-    }
-    bullet.sprites[index].SetOpacity(1);
+    stars_str += "*";
+  }
+
+  if (bullets_to_show > 0) {
+    stars.image = Image.Text(stars_str, 1.0, 0.855, 0.349, 1, "Share Tech Mono 14");
+    stars.sprite.SetImage(stars.image);
+    position_stars();
+    stars.sprite.SetOpacity(1);
+    global.stars_width = stars.image.GetWidth();
+  } else {
+    stars.sprite.SetOpacity(0);
+    global.stars_width = 0;
   }
 
   show_password_dialog();
@@ -271,9 +276,7 @@ fun layout() {
   prompt_boot.sprite.SetPosition(prompt.x, prompt.y, 10001);
   prompt_shutdown.sprite.SetPosition(prompt.x, prompt.y, 10001);
 
-  for (index = 0; bullet.sprites[index]; index++) {
-    position_bullet(index);
-  }
+  position_stars();
 
   update_cursor_position();
 
