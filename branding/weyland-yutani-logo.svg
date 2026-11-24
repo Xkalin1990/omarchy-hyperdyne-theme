@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" width="680" height="200">
+  <!-- Weyland-Yutani Corp Emblem -->
+  <!-- Main winged W -->
+  <polygon fill="#f0a850" points="
+    20,20 102,20 200,118 208,118 306,20 374,20
+    472,118 480,118 578,20 660,20 660,42 522,180
+    430,180 340,90 250,180 158,180 20,42
+  "/>
+
+  <!-- Left inverted triangle -->
+  <polygon fill="#f0a850" points="122,20 286,20 204,102"/>
+
+  <!-- Right inverted triangle -->
+  <polygon fill="#f0a850" points="394,20 558,20 476,102"/>
+
+  <!-- Center upright triangle -->
+  <polygon fill="#f0a850" points="340,112 408,180 272,180"/>
+</svg>
