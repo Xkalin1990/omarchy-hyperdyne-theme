@@ -329,7 +329,7 @@ Item {
       actionFor: function(value) { return "omarchy-font-set " + Util.shellQuote(value) }
     },
     "power-profiles": {
-      script: "printf 'Managed by Windows\\tdefault\\tdefault\\n'",
+      script: "if command -v powerprofilesctl >/dev/null 2>&1; then current=$(powerprofilesctl get 2>/dev/null); powerprofilesctl list 2>/dev/null | sed -n 's/^[* ]*\\([a-z-]*\\):$/\\1/p' | while read -r p; do printf '%s\\t%s\\t%s\\n' \"$p\" \"$p\" \"$current\"; done; else printf 'Managed by Windows\\tdefault\\tdefault\\n'; fi",
       icon: "\udb81\udc0b",
       // Profile names are powerprofilesctl ids; only the label is translated,
       // and the id stays searchable through searchTerms.
@@ -339,7 +339,7 @@ Item {
         if (value === "performance") return Commons.I18n.t("menu.powerProfilePerformance")
         return value
       },
-      actionFor: function(value) { return "" }
+      actionFor: function(value) { return value === "default" ? "" : "powerprofilesctl set " + Util.shellQuote(value) }
     },
     // Kernel names are package names, the same in every language.
     "kernels": {
@@ -1330,15 +1330,6 @@ Item {
         id: keyCatcher
         anchors.fill: parent
         z: root.deleteConfirmOpen ? 20 : 0
-        layer.enabled: true
-        layer.effect: MultiEffect {
-          shadowEnabled: true
-          shadowColor: root.foreground
-          shadowBlur: 0.60
-          shadowOpacity: 0.55
-          shadowHorizontalOffset: 0
-          shadowVerticalOffset: 0
-        }
 
         // Focus is on filterInput, which forwards every key here first.
         Keys.onPressed: function(event) {
@@ -1411,6 +1402,15 @@ Item {
         anchors.bottomMargin: card.contentBottomInset
         anchors.leftMargin: card.contentLeftInset
         spacing: root.contentSpacing
+        layer.enabled: true
+        layer.effect: MultiEffect {
+          shadowEnabled: true
+          shadowColor: root.foreground
+          shadowBlur: 0.60
+          shadowOpacity: 0.55
+          shadowHorizontalOffset: 0
+          shadowVerticalOffset: 0
+        }
 
         Rectangle {
           width: parent.width
