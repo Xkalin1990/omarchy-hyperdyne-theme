@@ -1,0 +1,11 @@
+[Plymouth Theme]
+Name=Hyperdyne
+Description=Hyperdyne Systems splash screen.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/hyperdyne
+ScriptFile=/usr/share/plymouth/themes/hyperdyne/hyperdyne.script
+ConsoleLogBackgroundColor=0x080201
+MonospaceFont=Share Tech Mono 11
+Font=Share Tech Mono 11
