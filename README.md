@@ -13,6 +13,20 @@ An *Alien: Romulus* **Hyperdyne Systems** (`PRIVATE TERMINAL 13-231-1`) theme fo
 ### System About
 ![Hyperdyne About](screenshots/hyperdyne-about.png)
 
+## Wallpapers
+
+### Hyperdyne CRT
+![Hyperdyne CRT Wallpaper](theme/backgrounds/hyperdyne-crt-wallpaper.jpg)
+
+### Isolation
+![Isolation Wallpaper](theme/backgrounds/isolation.jpg)
+
+### Romulus
+![Romulus Wallpaper](theme/backgrounds/romulus2.jpg)
+
+### Wallhaven CRT
+![Wallhaven CRT Wallpaper](theme/backgrounds/wallhaven-k8r93q.png)
+
 ## Summary: What Gets Installed & Effects
 
 ### Visual & CRT Effects
