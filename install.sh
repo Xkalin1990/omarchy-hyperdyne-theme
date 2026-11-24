@@ -16,12 +16,15 @@ cp "$SCRIPT_DIR/fonts/ShareTechMono-Regular.ttf" "$HOME/.local/share/fonts/"
 fc-cache -f
 omarchy font set "Share Tech Mono"
 
-# 3. Install branding (About & Screensaver)
-mkdir -p "$HOME/.config/omarchy/branding"
+# 3. Install branding (About & Screensaver) and bar menu plugin
+mkdir -p "$HOME/.config/omarchy/branding" "$HOME/.config/omarchy/plugins"
 for f in about.txt screensaver.txt; do
   [[ -f "$HOME/.config/omarchy/branding/$f" ]] && cp "$HOME/.config/omarchy/branding/$f" "$HOME/.config/omarchy/branding/$f.bak"
   cp "$SCRIPT_DIR/branding/$f" "$HOME/.config/omarchy/branding/$f"
 done
+if [[ -d "$SCRIPT_DIR/plugins/omarchy.menu" ]]; then
+  cp -r "$SCRIPT_DIR/plugins/omarchy.menu" "$HOME/.config/omarchy/plugins/"
+fi
 
 # 4. Install terminal, prompt, and btop styling
 mkdir -p "$HOME/.config/foot" "$HOME/.config/btop"
