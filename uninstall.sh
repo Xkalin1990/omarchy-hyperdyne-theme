@@ -35,10 +35,13 @@ if command -v hyprctl >/dev/null 2>&1 && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}
   hyprctl reload config-only >/dev/null 2>&1 || true
 fi
 
-# 2. Restore terminal, prompt, btop, and bashrc
+# 2. Restore terminal, prompt, btop, Neovim, and bashrc
 restore_or_remove_file "$HOME/.config/foot/foot.ini"
 restore_or_remove_file "$HOME/.config/starship.toml"
 restore_or_remove_file "$HOME/.config/btop/btop.conf"
+rm -f "$HOME/.config/nvim/lua/plugins/hyperdyne.lua"
+rm -f "$HOME/.config/nvim/lua/config/wy_logo_banner.lua"
+restore_or_remove_file "$HOME/.config/nvim/lua/plugins/lualine-transparent.lua"
 rm -f "$HOME/.config/omarchy/hyperdyne-banner.sh"
 
 if [[ -f "$HOME/.bashrc" ]]; then

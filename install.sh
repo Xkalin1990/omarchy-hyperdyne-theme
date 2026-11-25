@@ -94,7 +94,7 @@ else
   echo "Warning: ~/.config/hypr/autostart.lua not found; crt-shader-watcher.sh will not autostart on login." >&2
 fi
 
-# 5. Install terminal, prompt, and btop styling
+# 5. Install terminal, prompt, btop, and Neovim styling
 mkdir -p "$HOME/.config/foot" "$HOME/.config/btop"
 backup_file "$HOME/.config/foot/foot.ini"
 cp "$SCRIPT_DIR/terminal/foot.ini" "$HOME/.config/foot/foot.ini"
@@ -104,6 +104,14 @@ cp "$SCRIPT_DIR/terminal/starship.toml" "$HOME/.config/starship.toml"
 
 backup_file "$HOME/.config/btop/btop.conf"
 cp "$SCRIPT_DIR/terminal/btop.conf" "$HOME/.config/btop/btop.conf"
+
+if [[ -d "$HOME/.config/nvim" ]]; then
+  mkdir -p "$HOME/.config/nvim/lua/plugins" "$HOME/.config/nvim/lua/config"
+  backup_file "$HOME/.config/nvim/lua/plugins/lualine-transparent.lua"
+  cp "$SCRIPT_DIR/nvim/lua/plugins/hyperdyne.lua" "$HOME/.config/nvim/lua/plugins/hyperdyne.lua"
+  cp "$SCRIPT_DIR/nvim/lua/plugins/lualine-transparent.lua" "$HOME/.config/nvim/lua/plugins/lualine-transparent.lua"
+  cp "$SCRIPT_DIR/nvim/lua/config/wy_logo_banner.lua" "$HOME/.config/nvim/lua/config/wy_logo_banner.lua"
+fi
 
 cp "$SCRIPT_DIR/terminal/hyperdyne-banner.sh" "$HOME/.config/omarchy/hyperdyne-banner.sh"
 chmod +x "$HOME/.config/omarchy/hyperdyne-banner.sh"

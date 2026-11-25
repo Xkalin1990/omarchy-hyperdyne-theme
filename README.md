@@ -17,6 +17,9 @@ To complete the vintage hardware feel without sacrificing daily usability, the t
 ### Terminal & Prompt
 ![Hyperdyne Terminal](screenshots/hyperdyne-terminal.png)
 
+### Neovim (`NVIM-CORE // 13-231-1`)
+![Hyperdyne Neovim](screenshots/hyperdyne-nvim.png)
+
 ### System About
 ![Hyperdyne About](screenshots/hyperdyne-about-v2.png)
 
@@ -60,11 +63,12 @@ To complete the vintage hardware feel without sacrificing daily usability, the t
 - **OmaWidgets Desktop Cards (`omawidgets/`)**: Theme-gated Hyperdyne / Weyland-Yutani CRT terminal styling for **[OmaWidgets](https://github.com/fabandrade88/OmaWidgets)** (`io.github.fabandrade88.omawidgets`) featuring `W-Y //` telemetry headers, Weyland-Yutani & Hyperdyne emblems, corner reticles, scanlines, `Share Tech Mono` typography, and terminal-style telemetry blocks for Performance (`SYS-01`), Battery (`PWR-02`), Power Profile (`PRO-03`), Media (`AUD-04`), and Pods (`POD-05`). Activates **only** when `hyperdyne` is the active theme and reverts cleanly on any other theme.
 - **Hyprland Shader & Watcher (`~/.config/hypr/`)**: `shaders/crt-scanlines.glsl`, `scripts/crt-shader-watcher.sh`, `crt-shader-state.lua` (sourced from Omarchy's `looknfeel.lua`), and autostart entry in `autostart.lua`. Requires `jq` and `socat`.
 - **Branding (`~/.config/omarchy/branding/`)**: Custom `HYPERDYNE` block-art logos for the About window (`about.txt`) and screensaver (`screensaver.txt`).
-- **Terminal, Prompt & System Monitor**:
+- **Terminal, Prompt, System Monitor & Neovim**:
   - `~/.config/foot/foot.ini` (`Share Tech Mono` size 11, 18px padding)
   - `~/.config/starship.toml` (red/amber prompt with `> ` symbol)
   - `~/.config/omarchy/hyperdyne-banner.sh` (interactive shell startup banner, sourced in `~/.bashrc`)
   - `~/.config/btop/btop.conf` (square corners, block-style graphs)
+  - `~/.config/nvim/` (`lua/plugins/hyperdyne.lua`, `lua/config/wy_logo_banner.lua`, `lua/plugins/lualine-transparent.lua` — symmetrical truecolor Weyland-Yutani CRT emblem dashboard, `NVIM-CORE` telemetry header, sharp 90-degree CRT borders, and `WY:*` lualine statusline)
 - **Plymouth Bootsplash (optional, requires `sudo`)**: `plymouth/hyperdyne/` bootsplash & LUKS unlock theme in `#1a0806` / `#e44543` / `#da9000` (installed automatically with `sudo` if `plymouth-set-default-theme` is present).
 
 ## Prerequisites
